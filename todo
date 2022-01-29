@@ -3,10 +3,13 @@
 3. add bull for background jobs
 4. construct api
     kue task
+    A. every 2 min interval
     i. fetch the api
     ii. function for converting a unique id for flight in db,
     iii. function to check Id doesnt exist in db,
     iv. function to stream records to db
+
+    B. kue task at 12 hours to clear db for another day
 
     rest api
     i. fetch from db from top to bottom and with filter criteria
