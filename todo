@@ -1,0 +1,14 @@
+1. add mongo db
+2. add kue for cron jobs
+3. add bull for background jobs
+4. construct api
+    kue task
+    i. fetch the api
+    ii. function for converting a unique id for flight in db,
+    iii. function to check Id doesnt exist in db,
+    iv. function to stream records to db
+
+    rest api
+    i. fetch from db from top to bottom and with filter criteria
+
+    write jest test for coverage
