@@ -8,11 +8,11 @@ import { Flight } from '../../schema/flight/flight.schema';
 const allFlights = async (req: Request, res: Response) => {
   try {
     const flights = await Flight.find()
-      .select('-flight_db_id -createdAt -updatedAt')
+      .select('-flight_db_id -createdAt -updatedAt -__v')
       .sort('-createdAt');
     return res.status(200).json({ data: flights, size: flights.length });
   } catch (e) {
-    console.log(e);
+    throw Error(e);
   }
 };
 export { allFlights };

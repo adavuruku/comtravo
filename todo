@@ -1,7 +1,6 @@
 1. add mongo db
 2. add kue for cron jobs
-3. add bull for background jobs
-4. construct api
+3. construct api
     kue task
     A. every 2 min interval
     i. fetch the api

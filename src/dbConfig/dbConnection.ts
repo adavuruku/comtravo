@@ -3,13 +3,13 @@ import config from 'config';
 import mongoose from 'mongoose';
 // import { UserModel } from './users/users.model';
 let database: Mongoose.Connection;
-export const connect = () => {
+export const connect = async () => {
   // add your own uri below
   console.log("config.get('app.environment')", config.get('app.environment'));
   const uri: string =
     config.get('app.environment') === 'development'
       ? config.get('databases.mongodb.test')
-      : config.get('databases.mongodb.url');
+      : config.get('databases.mongodb.test');
 
   if (database) {
     return;
@@ -23,14 +23,14 @@ export const connect = () => {
     };
   });
   database = Mongoose.connection;
-  database.once('open', async () => {
-    console.log('Connected to database');
-  });
-  database.on('error', (error) => {
-    console.log('Error connecting to database', error);
-  });
+  // database.once('open', async () => {
+  //   console.log('Connected to database');
+  // });
+  // database.on('error', (error) => {
+  //   console.log('Error connecting to database', error);
+  // });
 };
-export const disconnect = () => {
+export const disconnect = async () => {
   if (!database) {
     return;
   }
