@@ -5,10 +5,10 @@ import mongoose from 'mongoose';
 let database: Mongoose.Connection;
 export const connect = async () => {
   // add your own uri below
-  console.log("config.get('app.environment')", config.get('app.environment'));
+  // console.log("config.get('app.environment')", config.get('app.environment'));
   const uri: string =
     config.get('app.environment') === 'development'
-      ? config.get('databases.mongodb.test')
+      ? config.get('databases.mongodb.dev')
       : config.get('databases.mongodb.test');
 
   if (database) {

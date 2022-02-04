@@ -8,6 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 import { swaggerDocument } from '../openAPI/swaggerDoc';
 
 import { flightRoute } from './app/controller/flight/flight.controller';
+import { scheduleJobToFetchApi } from './common/cronjobs/jobs/cronJobs';
 app.use('/v1/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -35,4 +36,14 @@ app.use((req, res, next) => {
     },
   });
 });
+
+connect()
+  .then(() => {
+    console.log('Connected to database');
+
+    scheduleJobToFetchApi();
+  })
+  .catch((error) => {
+    console.log('Error connecting to database', error);
+  });
 export default app;

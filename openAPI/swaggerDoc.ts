@@ -1,5 +1,5 @@
 import config from 'config';
-import { getFlights } from './flights';
+import { getFlights, getRoundTripFlights } from './flights';
 export const swaggerDocument = {
   openapi: '3.0.1',
   info: {
@@ -21,13 +21,16 @@ export const swaggerDocument = {
       description: 'Flights API',
     },
   ],
-  schemes: ['http'],
   paths: {
     '/v1/flight': {
       get: getFlights,
     },
+    '/v1/flight/round-trip': {
+      get: getRoundTripFlights,
+    },
   },
-  host: 'localhost:8080',
+  schemes: ['http'],
+  host: `localhost:${config.get('app.port')}`,
   basePath: '/',
   license: {
     name: 'Apache 2.0',

@@ -10,7 +10,12 @@ describe('Test Server Running', () => {
   });
 
   it('should respond with a 200 status code', async () => {
-    const response = await server.get('/');
+    const response = await server.get('/v1');
     expect(response.statusCode).toBe(200);
+  });
+
+  it('should respond with a 404 status code', async () => {
+    const response = await server.get('/');
+    expect(response.statusCode).toBe(404);
   });
 });
